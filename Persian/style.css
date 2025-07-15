@@ -1,0 +1,409 @@
+/* Define color variables for consistency */
+:root {
+    --dark-teal: #004a5a; /* Approximate color from the left sidebar */
+    --light-teal: #4db6ac; /* Approximate color used for titles/links */
+    --text-color: #333; /* Standard text color */
+    --grey-text: #555; /* Slightly lighter text color */
+    --light-grey-text: #ccc; /* Very light text color */
+}
+
+body {
+    font-family: 'Vazirmatn FD', sans-serif; /* Use the Persian font */
+    line-height: 1.8; /* Slightly increased line height for better readability in Persian */
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light background for the page */
+    display: flex;
+    justify-content: center; /* Center the resume container */
+}
+
+.resume-container {
+    display: flex;
+    width: 800px; /* Or a suitable fixed width for desktop view */
+    max-width: 100%; /* Ensure it doesn't overflow on smaller screens */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+    /* The column layout is LTR, so direction: rtl is applied within columns */
+}
+
+.left-column {
+    flex: 0 0 280px; /* Fixed width for the left column */
+    background-color: var(--dark-teal);
+    color: white; /* White text color for the dark background */
+    padding: 30px 20px;
+    box-sizing: border-box; /* Include padding in the element's total width */
+    /* Text direction is applied inside specific elements if needed */
+}
+
+.right-column {
+    flex: 1; /* Right column takes up the remaining space */
+    background-color: #fff;
+    color: var(--text-color);
+    padding: 30px;
+    box-sizing: border-box;
+    direction: rtl; /* Apply RTL to the right column content */
+    text-align: right; /* Default text alignment for RTL content */
+}
+
+/* Adjust text alignment for elements that should not be right-aligned by default */
+.right-column .contact-info {
+    text-align: right; /* Icons and text should align right together */
+}
+
+.right-column .item-header,
+.right-column .item-meta {
+    direction: rtl; /* Ensure flex direction is respected within RTL context */
+}
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-section img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    border: 4px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+}
+
+/* Section Headings */
+.left-column h2 {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+    text-align: right; /* Align headings right in RTL sidebar */
+}
+
+.right-column h2 {
+    color: var(--text-color);
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Light grey border */
+    text-align: right; /* Ensure headings align right in RTL column */
+}
+
+
+/* Left Column Content Styling */
+.left-column section {
+    margin-bottom: 30px;
+}
+
+.left-column ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+    direction: rtl; /* Apply RTL to the list items */
+    text-align: right;
+}
+
+/* Style for custom list items in skills section */
+.left-column .skills-section ul li {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: var(--light-grey-text); /* Lighter text for lists */
+    position: relative; /* Needed for pseudo-element bullet */
+    padding-right: 15px; /* Space for the custom bullet */
+}
+
+/* Custom bullet point using pseudo-element */
+.left-column .skills-section ul li::before {
+    content: "•"; /* Or another suitable character */
+    color: var(--light-teal); /* Bullet color */
+    position: absolute;
+    right: 0; /* Position bullet on the right for RTL */
+    top: 0;
+    font-size: 1.2em;
+    line-height: 1.6; /* Match line height */
+}
+
+
+/* Strengths Section */
+.strength-item {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start; /* Align text to the top */
+    margin-bottom: 15px; /* Add margin between strength items */
+    direction: rtl; /* Apply RTL to the item content */
+    text-align: right;
+}
+
+.strength-item:last-child {
+     margin-bottom: 0;
+}
+
+.strength-item .icon {
+    font-size: 1.4em;
+    margin-left: 15px; /* Swap margin: left instead of right */
+    margin-right: 0; /* Remove previous right margin */
+    color: var(--light-teal); /* Light teal color for icons */
+    width: 25px; /* Give icon a fixed width for alignment */
+    text-align: center;
+    flex-shrink: 0; /* Prevent shrinking */
+    order: 2; /* Place icon visually second in the flex item (on the left in RTL) */
+}
+
+.strength-item .text {
+    order: 1; /* Place text visually first (on the right in RTL) */
+    flex-grow: 1;
+}
+
+.strength-item .text h3 {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: white; /* White heading */
+    text-align: right;
+}
+
+.strength-item .text p {
+    font-size: 0.95em;
+    margin: 0;
+    color: var(--light-grey-text); /* Lighter text */
+    text-align: right;
+}
+
+
+/* Certification Section */
+.certification-section {
+    direction: rtl; /* Apply RTL to the certification content */
+    text-align: right;
+}
+
+.cert-item {
+    margin-bottom: 15px;
+}
+
+.cert-item:last-child {
+    margin-bottom: 0;
+}
+
+.cert-item h3 {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: white; /* White heading */
+    text-align: right;
+}
+
+.cert-item p {
+    font-size: 0.95em;
+    margin: 0;
+    color: var(--light-grey-text); /* Lighter text */
+    text-align: right;
+}
+
+
+/* Right Column Content Styling */
+
+/* Header Section */
+.header-section {
+    margin-bottom: 30px;
+    text-align: right; /* Ensure text aligns right */
+}
+
+.header-section h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: var(--text-color);
+    text-align: right;
+}
+
+.header-section .title {
+    font-size: 1.2em;
+    color: var(--light-teal);
+    margin: 0 0 15px 0;
+    font-weight: 600;
+    text-align: right;
+}
+
+.contact-info {
+    font-size: 0.9em;
+    color: var(--grey-text);
+    /* Icons are before text in HTML, in RTL flow they appear before visually */
+}
+
+.contact-info span {
+    margin-left: 20px; /* Swap margin: left instead of right */
+    margin-right: 0;
+    display: inline-block; /* Ensure spacing works */
+}
+
+.contact-info span:last-child {
+    margin-left: 0; /* Remove last margin */
+}
+
+.contact-info a {
+    color: var(--grey-text);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-info .fas {
+    margin-left: 5px; /* Swap margin: left instead of right */
+    margin-right: 0;
+    color: var(--light-teal); /* Icon color */
+}
+
+.contact-info .fab {
+    margin-right: 5px;
+    margin-right: 0;
+    color: var(--light-teal); /* Icon color */
+}
+
+/* Summary Section */
+.summary-section p {
+    font-size: 1em;
+    margin: 0;
+    color: var(--grey-text);
+    text-align: right; /* Ensure text aligns right */
+}
+
+/* Experience & Education Sections */
+.experience-section,
+.education-section {
+    margin-bottom: 30px;
+}
+
+.experience-item,
+.education-item {
+    margin-bottom: 20px; /* Space between items */
+}
+
+.experience-item:last-child,
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.item-header,
+.item-meta {
+    display: flex;
+    justify-content: space-between; /* Pushes items to ends (right/left in RTL) */
+    align-items: baseline; /* Align text baselines */
+    margin-bottom: 5px;
+    direction: rtl; /* Ensure flex behaves correctly in RTL */
+}
+
+/* Titles/Company on the right (start) */
+.item-header h3,
+.item-meta p {
+    font-size: 1.1em; /* Slightly larger for headers */
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-color);
+    text-align: right; /* Explicitly align right */
+    flex-grow: 1; /* Allow text to grow */
+}
+
+/* Dates/Location on the left (end) */
+.dates,
+.location {
+    font-size: 0.9em;
+    color: var(--grey-text);
+    flex-shrink: 0; /* Prevent shrinking */
+    margin-right: 10px; /* Add some space between text and dates/location */
+    margin-left: 0; /* Remove previous left margin */
+    text-align: left; /* Align dates/location left */
+}
+
+
+.experience-item ul {
+    list-style: disc; /* Standard bullet points (will appear on the right in RTL) */
+    padding-right: 20px; /* Swap padding: right instead of left */
+    padding-left: 0;
+    margin-top: 10px; /* Space between meta info and bullets */
+    margin-bottom: 0;
+    color: var(--grey-text);
+    direction: rtl; /* Ensure bullets and text are RTL */
+    text-align: right;
+}
+
+.experience-item ul li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    text-align: right; /* Ensure list item text aligns right */
+}
+
+.experience-item ul li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Education Section */
+.education-item .item-header h3 {
+    font-size: 1.1em; /* Match experience title size */
+}
+.education-item .item-meta p {
+     font-size: 1em; /* Match experience company size */
+}
+
+
+/* Languages Section */
+.languages-section {
+    direction: rtl; /* Apply RTL to the language section */
+    text-align: right;
+}
+
+.language-item {
+    flex-direction: row-reverse;
+    display: flex;
+    text-align: right;
+    font-size: 1em;
+    color: var(--grey-text);
+    /* Flex items will flow right-to-left: Dots | Proficiency | Name */
+}
+
+.language-name {
+    font-weight: 600;
+    flex: 0 0 100px; /* Fixed width for language name column */
+    flex-shrink: 0; /* Prevent shrinking */
+    text-align: right;
+    order: 3; /* Visually place name on the far right in RTL flex */
+}
+
+.proficiency {
+    flex: 0 0 80px; /* Fixed width for proficiency text */
+    flex-shrink: 0;
+    text-align: right;
+    order: 2; /* Visually place proficiency next to name */
+    margin-left: 5px; /* Add a small space after proficiency text */
+    margin-right: 0;
+}
+
+.level-dots {
+    color: var(--light-teal); /* Color for proficiency dots */
+    font-size: 0.8em; /* Smaller size for dots */
+    flex-grow: 1; /* Allow dots area to take remaining space */
+    text-align: left; /* Align dots to the left within their area */
+    order: 1; /* Visually place dots on the far left in RTL flex */
+}
+
+.level-dots .fas {
+     margin-left: 2px; /* Swap margin: left instead of right */
+     margin-right: 0;
+}
+
+/* Adjust line height for better appearance in Persian */
+.left-column p,
+.left-column ul li,
+.right-column p,
+.right-column ul li {
+    line-height: 1.8;
+}
+
+.header-section .title {
+     line-height: 1.5; /* Keep title line height smaller */
+}
